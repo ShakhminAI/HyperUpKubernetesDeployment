@@ -31,10 +31,10 @@
                 "containerPort": 5008,
                 "protocol": "TCP"
               }
-            ],
-            "imagePullSecrets": [ { "name": "regcred" } ]
+            ]
           }
-        ]
+        ],
+        "imagePullSecrets": [ { "name": "regcred" } ]
       }
     }
   }
