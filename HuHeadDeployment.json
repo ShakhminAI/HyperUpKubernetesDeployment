@@ -11,9 +11,9 @@
     "selector": {
       "matchLabels": {
         "app": "hyperupheadinstance"
-      },
-      "imagePullSecrets": [ { "name": "regcred" } ]
+      }
     },
+    "imagePullSecrets": [ { "name": "regcred" } ],
     "template": {
       "metadata": {
         "labels": {
