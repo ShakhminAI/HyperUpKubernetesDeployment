@@ -1,0 +1,41 @@
+{
+  "kind": "Deployment",
+  "apiVersion": "apps/v1",
+  "metadata": {
+    "name": "hyperupfrontdeployment",
+    "generateName": "hyperupfront",
+    "namespace": "default"
+  },
+  "spec": {
+    "replicas": 1,
+    "selector": {
+      "matchLabels": {
+        "app": "hyperupfront"
+      }
+    },
+    "template": {
+      "metadata": {
+        "labels": {
+          "app": "hyperupfront"
+        },
+        "name": "hyperupfront",
+        "generateName": "hyperupfront"
+      },
+      "spec": {
+        "containers": [
+          {
+            "name": "hyperupfront",
+            "image": "192.168.1.11:5000/dockerarvi/front:latest",
+            "ports": [
+              {
+                "containerPort": 5004,
+                "protocol": "TCP"
+              }
+            ]
+          }
+        ],
+        "imagePullSecrets": [ { "name": "regcred" } ]
+      }
+    }
+  }
+}
