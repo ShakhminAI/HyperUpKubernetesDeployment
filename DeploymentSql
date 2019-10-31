@@ -1,0 +1,41 @@
+{
+  "kind": "Deployment",
+  "apiVersion": "apps/v1",
+  "metadata": {
+    "name": "husqldep",
+    "generateName": "husqlinst",
+    "namespace": "default"
+  },
+  "spec": {
+    "replicas": 1,
+    "selector": {
+      "matchLabels": {
+        "app": "husqlinst"
+      }
+    },
+    "template": {
+      "metadata": {
+        "labels": {
+          "app": "husqlinst"
+        },
+        "name": "husqlinst",
+        "generateName": "husqlinst"
+      },
+      "spec": {
+        "containers": [
+          {
+            "name": "huplugininstance",
+            "image": "192.168.1.11:5000/dockerarvi/husqlinst:latest",
+            "ports": [
+              {
+                "containerPort": 6008,
+                "protocol": "TCP"
+              }
+            ]
+          }
+        ],
+        "imagePullSecrets": [ { "name": "regcred" } ]
+      }
+    }
+  }
+}
