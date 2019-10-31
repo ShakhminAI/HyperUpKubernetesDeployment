@@ -1,0 +1,41 @@
+{
+  "kind": "Deployment",
+  "apiVersion": "apps/v1",
+  "metadata": {
+    "name": "migheaddep",
+    "generateName": "migheadinst",
+    "namespace": "default"
+  },
+  "spec": {
+    "replicas": 1,
+    "selector": {
+      "matchLabels": {
+        "app": "migheadinst"
+      }
+    },
+    "template": {
+      "metadata": {
+        "labels": {
+          "app": "migheadinst"
+        },
+        "name": "migheadinst",
+        "generateName": "migheadinst"
+      },
+      "spec": {
+        "containers": [
+          {
+            "name": "migheadinst",
+            "image": "192.168.1.11:5000/dockerarvi/migheadinst:latest",
+            "ports": [
+              {
+                "containerPort": 9008,
+                "protocol": "TCP"
+              }
+            ]
+          }
+        ],
+        "imagePullSecrets": [ { "name": "regcred" } ]
+      }
+    }
+  }
+}
