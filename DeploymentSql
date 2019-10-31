@@ -28,7 +28,7 @@
             "image": "192.168.1.11:5000/dockerarvi/husqlinst:latest",
             "ports": [
               {
-                "containerPort": 6008,
+                "containerPort": 9008,
                 "protocol": "TCP"
               }
             ]
