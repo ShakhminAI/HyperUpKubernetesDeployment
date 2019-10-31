@@ -1,0 +1,41 @@
+{
+  "kind": "Deployment",
+  "apiVersion": "apps/v1",
+  "metadata": {
+    "name": "humigdep",
+    "generateName": "humiginst",
+    "namespace": "default"
+  },
+  "spec": {
+    "replicas": 1,
+    "selector": {
+      "matchLabels": {
+        "app": "humiginst"
+      }
+    },
+    "template": {
+      "metadata": {
+        "labels": {
+          "app": "humiginst"
+        },
+        "name": "humiginst",
+        "generateName": "humiginst"
+      },
+      "spec": {
+        "containers": [
+          {
+            "name": "humiginst",
+            "image": "192.168.1.11:5000/dockerarvi/humiginst:latest",
+            "ports": [
+              {
+                "containerPort": 7008,
+                "protocol": "TCP"
+              }
+            ]
+          }
+        ],
+        "imagePullSecrets": [ { "name": "regcred" } ]
+      }
+    }
+  }
+}
